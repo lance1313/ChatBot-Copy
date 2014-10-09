@@ -11,8 +11,7 @@ import javax.swing.*;
  * @author jlin3312
  *
  */
-public class ChatBotModel
-{
+public class ChatBotModel {
 
 	private String name;
 	private int chatCount;
@@ -54,8 +53,7 @@ public class ChatBotModel
 	 * 
 	 * @return
 	 */
-	public int getchatCount()
-	{
+	public int getchatCount() {
 		return chatCount;
 	}
 
@@ -70,8 +68,7 @@ public class ChatBotModel
 		this.name = name;
 	}
 
-	private void fillTheMemeList()
-	{
+	private void fillTheMemeList() {
 		memeList.add("Poke");
 		memeList.add("hello");
 		memeList.add(" my name");
@@ -80,14 +77,13 @@ public class ChatBotModel
 		memeList.add("sucker");
 	}
 
-	private void fillTheContentList()
-	{
+	private void fillTheContentList() {
 		contentList.add("");
 		contentList.add("");
 		contentList.add("");
 		contentList.add("");
 	}
-	
+
 	/**
 	 * 
 	 * @param currentInput
@@ -98,7 +94,36 @@ public class ChatBotModel
 	public String processText(String currentInput)
 	{
 		String result = "";
-
+		int randomPosition = (int) (Math.random()* 3);
+		if(currentInput != null)
+		{
+		
+		if(randomPosition == 0)
+		{
+			//this is String checker here
+			if(stringChecker(currentInput))
+			{
+				result = "too long.";
+			}
+			
+		}
+		
+		else if(randomPosition == 1)
+		{
+			//contentChecker here.
+			if(contentChecker(currentInput))
+			{
+				result = "You are cool.";
+			}
+			else
+			{
+				result = "ZZZZzzz.";
+			}
+		}
+		
+		else
+		{
+		
 		if (memeChecker(currentInput))// if it is true
 		{
 			result = "wow, " + currentInput + " is a meme  wahoo!";
@@ -109,52 +134,59 @@ public class ChatBotModel
 			result = "Not a meme, try again";
 		}
 		
-		
+		}
+		}
+		else
+		{
+		result = "use words!!!!";	
+		}
 
 		return result;
 	}
 
-	private void updateChatCount()
-	{
+	private void updateChatCount() {
 		chatCount++;
 	}
-/**
- * 
- * @param currentInput
- * @return
- */
-	private String contentChecker(String currentInput)
-	{
-		String content = "";
-		String returnWord = "";
-		
-		if(currentInput.contains(""))
-		{
-			returnWord = "hello " + currentInput+ "my name is " + name;
-		}
-			
-		
-		
 
-		
-		
-		
+	/**
+	 * 
+	 * @param currentInput
+	 * @return
+	 */
+	private boolean contentChecker(String currentInput) {
+
+		boolean returnWord = false;
+
+		if (currentInput.contains("Jacob")) {
+			//returnWord = "hello " + currentInput + "my name is " + name;
+		}
 		return returnWord;
 
 	}
-/**
- * 
- * @param input
- * @return
- */
-	private boolean memeChecker(String input)
-	{
+
+	private boolean stringChecker(String currentInput) {
+
+		boolean isToLong = false;
+		if (currentInput.length() >= 10)
+		{
+			isToLong = true;
+		}
+
+		return isToLong;
+
+	}
+
+	/**
+	 * 
+	 * @param input
+	 * @return
+	 */
+	private boolean memeChecker(String input) {
 		boolean isAMeme = false;
 
 		for (String currentMeme : memeList)// for each loop.
 		{
-			if (input.equalsIgnoreCase(currentMeme))
-			{
+			if (input.equalsIgnoreCase(currentMeme)) {
 				isAMeme = true;
 			}
 		}
@@ -162,8 +194,7 @@ public class ChatBotModel
 		for (int loopCounter = 0; loopCounter < memeList.size(); loopCounter++)// for
 																				// loop.
 		{
-			if (input.equalsIgnoreCase(memeList.get(loopCounter)))
-			{
+			if (input.equalsIgnoreCase(memeList.get(loopCounter))) {
 				isAMeme = true;
 			}
 
@@ -173,19 +204,16 @@ public class ChatBotModel
 
 	}
 
-	
 	/**
 	 * This checks the input from the view to see if you should quit.
 	 * 
 	 * @param input
 	 * @return
 	 */
-	public boolean quitChecker(String input)
-	{
+	public boolean quitChecker(String input) {
 		boolean okToQuit = false;
 
-		if (input != null && input.equals("yes"))
-		{
+		if (input != null && input.equals("yes")) {
 			okToQuit = true;
 		}
 
