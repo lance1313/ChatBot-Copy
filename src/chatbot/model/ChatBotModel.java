@@ -38,7 +38,7 @@ public class ChatBotModel {
 
 	}
 
-	/**
+	/** 
 	 * this returns the name value.
 	 * 
 	 * @return
