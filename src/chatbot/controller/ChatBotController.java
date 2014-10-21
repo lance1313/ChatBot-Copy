@@ -3,6 +3,7 @@ package chatbot.controller;
 import javax.swing.JOptionPane;
 
 import chatbot.model.ChatBotModel;
+import chatbot.view.ChatBotFrame;
 import chatbot.view.ChatBotView;
 /**
  * Runs ChotBot project. Owns the model and associated views.
@@ -13,11 +14,26 @@ import chatbot.view.ChatBotView;
  */
 public class ChatBotController
 {
-	
+	/**
+	 * 
+	 */
 	private ChatBotView appView;
+	/**
+	 * 
+	 */
 	private ChatBotModel myAwesomeChatBot;
+	/**
+	 * 
+	 */
 	private String startMessage;
+	/**
+	 * 
+	 */
 	private String quitMessage;
+	/**
+	 * reference to GUI frame.
+	 */
+	private ChatBotFrame appFrame;
 	
 	public ChatBotController()
 	{
@@ -25,6 +41,7 @@ public class ChatBotController
 		myAwesomeChatBot = new  ChatBotModel("derf");
 		startMessage = "Welcome to the " + myAwesomeChatBot.getName() + " chatbot. What is your name?";
 		quitMessage = "good bye cruel world:)";
+		appFrame = new ChatBotFrame(this);//Instantiate the reference.
 	}
 	/**
 	 * this is a constructor.
@@ -39,14 +56,14 @@ public class ChatBotController
 		
 		String result = appView.showChatBot(startMessage);
 		//this is the quit checker in model
-		while(!myAwesomeChatBot.quitChecker(result))
-		{//this is a new result from the result in view.
-			
-			result = myAwesomeChatBot.processText(result);
-			result = appView.showChatBot(result);
-		}
-			quit();
-		
+//		while(!myAwesomeChatBot.quitChecker(result))
+//		{//this is a new result from the result in view.
+//			
+//			result = myAwesomeChatBot.processText(result);
+//			result = appView.showChatBot(result);
+//		}
+//			quit();
+//		
 	}
 	
 		//start
