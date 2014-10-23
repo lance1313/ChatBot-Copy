@@ -22,6 +22,7 @@ public class ChatBotPanel extends JPanel {
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	private JScrollPane chatPane;
+	private JButton secondButton;
 	
 	/**
 	 * 
@@ -35,6 +36,11 @@ public class ChatBotPanel extends JPanel {
 		baseLayout = new SpringLayout();
 		chatArea = new JTextArea(5,20);
 		chatPane = new JScrollPane(chatArea);
+		secondButton = new JButton("???");
+		baseLayout.putConstraint(SpringLayout.NORTH, secondButton, 350, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, secondButton, 175, SpringLayout.WEST, this);
+
+		
 		
 		
 		
@@ -48,7 +54,9 @@ public class ChatBotPanel extends JPanel {
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 	}
-	
+	/**
+	 * this is were you put the GUI to be dysplayed on the panel in the frame.
+	 */
 	private void setupPanel()
 	{
 		this.setBackground(Color.CYAN);
@@ -57,13 +65,18 @@ public class ChatBotPanel extends JPanel {
 		this.add(firstButton);
 		this.add(firstTextField);
 		this.add(chatPane);
+		this.add(secondButton);
+		
 	}
 	
 	private void setupLayout()//dumping ground
 	{
-		baseLayout.putConstraint(SpringLayout.NORTH, firstButton, 92, SpringLayout.SOUTH, firstTextField);
-		baseLayout.putConstraint(SpringLayout.EAST, firstButton, 0, SpringLayout.EAST, firstTextField);
+		baseLayout.putConstraint(SpringLayout.NORTH, chatPane, 200, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatPane, 100, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, firstButton, 300, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, firstButton, 100, SpringLayout.WEST, this);
 	}
+	
 	
 	private void setupListeners()//this is what buttons do.
 	{
@@ -74,6 +87,8 @@ public class ChatBotPanel extends JPanel {
 				firstTextField.setText(firstTextField.getText()+":)");
 			}
 		});
+		
+		
 	}
 			
 	
