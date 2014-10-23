@@ -18,7 +18,7 @@ public class ChatBotFrame extends JFrame
 	 */
 	public ChatBotFrame(ChatBotController baseController) 
 	{
-		basePanel = new ChatBotPanel(baseController);
+		basePanel = new ChatBotPanel(baseController, null);
 		setupFrame();
 	}
 	/**
@@ -30,7 +30,6 @@ public class ChatBotFrame extends JFrame
 		this.setContentPane(basePanel);//this means i can do all the parent class can do to .
 		this.setSize(400,400);
 		this.setResizable(true);
-		
 		setVisible(true);
 	}
 
