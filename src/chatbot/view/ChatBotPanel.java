@@ -3,10 +3,10 @@ package chatbot.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
 import chatbot.controller.ChatBotController;
+import chatbot.model.ChatBotModel;
+
 
 /**
  * 
@@ -17,6 +17,7 @@ import chatbot.controller.ChatBotController;
 public class ChatBotPanel extends JPanel {
 
 	private ChatBotController baseController;//import the controller.
+	private ChatBotModel baseModel;
 	private JButton firstButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
@@ -28,17 +29,17 @@ public class ChatBotPanel extends JPanel {
 	 * 
 	 * @param baseController this links this panel to the controller.
 	 */
-	public ChatBotPanel(ChatBotController baseController)
+	public ChatBotPanel(ChatBotController baseController,ChatBotModel baseModel)
 	{
 		this.baseController = baseController;
+		this.baseModel = baseModel;
 		firstButton = new JButton("click the button... it is so clicky.");
 		firstTextField = new JTextField(25);
 		baseLayout = new SpringLayout();
 		chatArea = new JTextArea(5,20);
 		chatPane = new JScrollPane(chatArea);
 		secondButton = new JButton("???");
-		baseLayout.putConstraint(SpringLayout.NORTH, secondButton, 350, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, secondButton, 175, SpringLayout.WEST, this);
+		
 
 		
 		
@@ -49,6 +50,7 @@ public class ChatBotPanel extends JPanel {
 		setupLayout();
 		setupListeners();
 	}
+	
 	private void setupPane()
 	{
 		chatArea.setLineWrap(true);
@@ -75,6 +77,8 @@ public class ChatBotPanel extends JPanel {
 		baseLayout.putConstraint(SpringLayout.WEST, chatPane, 100, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, firstButton, 300, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, firstButton, 100, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, secondButton, 350, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, secondButton, 175, SpringLayout.WEST, this);
 	}
 	
 	
@@ -84,7 +88,7 @@ public class ChatBotPanel extends JPanel {
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstTextField.setText(firstTextField.getText()+":)");
+				firstTextField.setText(firstTextField.getText()+ baseModel);
 			}
 		});
 		
