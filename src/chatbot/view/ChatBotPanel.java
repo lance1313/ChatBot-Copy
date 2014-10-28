@@ -51,6 +51,19 @@ public class ChatBotPanel extends JPanel {
 		setupListeners();
 	}
 	
+	public String displayChat()
+	{
+		String initialMessage;
+		if(baseModel.getchatCount() > 0)
+		{
+			initialMessage = baseController.startMessage;
+		}
+		
+		
+		return null;
+		
+	}
+	
 	private void setupPane()
 	{
 		chatArea.setLineWrap(true);

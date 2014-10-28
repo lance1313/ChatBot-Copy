@@ -25,7 +25,7 @@ public class ChatBotController
 	/**
 	 * 
 	 */
-	private String startMessage;
+	public String startMessage;
 	/**
 	 * 
 	 */
@@ -39,6 +39,7 @@ public class ChatBotController
 	{
 		appView = new ChatBotView(this);
 		myAwesomeChatBot = new  ChatBotModel("derf");
+		
 		startMessage = "Welcome to the " + myAwesomeChatBot.getName() + " chatbot. What is your name?";
 		quitMessage = "good bye cruel world:)";
 		appFrame = new ChatBotFrame(this);//Instantiate the reference.
@@ -72,6 +73,14 @@ public class ChatBotController
 	//responed
 	//reply
 	//quit
+	
+	private void changeChat()
+	{
+		if(getChatCount > 0)
+		{
+			
+		}
+	}
 	
 
 	private void quit()
