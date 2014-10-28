@@ -59,8 +59,12 @@ public class ChatBotPanel extends JPanel {
 			initialMessage = baseController.startMessage;
 		}
 		
+		else
+		{
+			System.exit(0);
+		}
 		
-		return null;
+		return initialMessage;
 		
 	}
 	
@@ -101,7 +105,7 @@ public class ChatBotPanel extends JPanel {
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				firstTextField.setText(firstTextField.getText()+ baseModel);
+				firstTextField.setText(firstTextField.getText()+ );
 			}
 		});
 		

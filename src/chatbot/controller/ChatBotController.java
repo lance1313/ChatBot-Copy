@@ -74,13 +74,6 @@ public class ChatBotController
 	//reply
 	//quit
 	
-	private void changeChat()
-	{
-		if(getChatCount > 0)
-		{
-			
-		}
-	}
 	
 
 	private void quit()
