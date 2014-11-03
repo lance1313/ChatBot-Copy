@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import chatbot.model.ChatBotModel;
 import chatbot.view.ChatBotFrame;
+import chatbot.view.ChatBotPanel;
 import chatbot.view.ChatBotView;
 /**
  * Runs ChotBot project. Owns the model and associated views.
@@ -55,16 +56,24 @@ public class ChatBotController
 	public void start()
 	{
 		
-		String result = appView.showChatBot(startMessage);
-		//this is the quit checker in model
-//		while(!myAwesomeChatBot.quitChecker(result))
-//		{//this is a new result from the result in view.
-//			
-//			result = myAwesomeChatBot.processText(result);
-//			result = appView.showChatBot(result);
-//		}
-//			quit();
-//		
+		
+		((ChatBotPanel) appFrame.getContentPane()).showTextMessage(startMessage);//same as the code line below good for only using it a few times.
+		//ChatBotPanel testPanel = (ChatBotPanel) appFrame.getContentPane();//gets me access to the panel.
+				
+			
+		
+	}
+	
+	public String getChatBotDialog(String input)
+	{
+		String result = "";
+		if(myAwesomeChatBot.quitChecker(input))
+		{
+			quit();
+		}
+		result = myAwesomeChatBot.processText(input);
+		
+		return result;
 	}
 	
 		//start

@@ -1,7 +1,6 @@
 package chatbot.model;
 
 import java.util.*;
-
 import javax.swing.*;
 
 /**
@@ -18,6 +17,8 @@ public class ChatBotModel {
 	private ArrayList<String> memeList;
 	// Arrays.asList("hi","bye","yes","no"));
 	private ArrayList<String> contentList;
+	private ChatBotUser myUser;
+	
 
 	/**
 	 * creates an chatbot object with suppleid name and initializes the current
@@ -32,7 +33,8 @@ public class ChatBotModel {
 		this.name = name;
 		chatCount = 0;
 		memeList = new ArrayList<String>();// use paranthesis to call a
-											// constructor.
+		myUser  = new ChatBotUser();
+						// constructor.
 		contentList = new ArrayList<String>();
 		fillTheMemeList();
 
@@ -94,7 +96,13 @@ public class ChatBotModel {
 	public String processText(String currentInput)
 	{
 		String result = "";
-		int randomPosition = (int) (Math.random()* 3);
+		
+		if(getchatCount() < 7)
+		{
+			
+		}
+		
+		int randomPosition = (int) (Math.random()* 4);
 		if(currentInput != null)
 		{
 		
@@ -121,7 +129,8 @@ public class ChatBotModel {
 			}
 		}
 		
-		else
+		else if(randomPosition == 2)
+		{
 		{
 		
 		if (memeChecker(currentInput))// if it is true
@@ -136,11 +145,17 @@ public class ChatBotModel {
 		
 		}
 		}
+			else
+			{
+			//talk about user here:
+			}
+		}
+		
 		else
 		{
 		result = "use words!!!!";	
 		}
-
+		updateChatCount();
 		return result;
 	}
 
