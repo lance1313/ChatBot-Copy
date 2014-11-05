@@ -45,6 +45,9 @@ public class ChatBotUser {
 	 * @return new name for user
 	 */
 	public boolean isPlaysCardGames() {
+		
+		
+	
 		return playsCardGames;
 	}
 /**

@@ -1,7 +1,10 @@
 package chatbot.model;
 
 import java.util.*;
+
 import javax.swing.*;
+
+import chatbot.controller.ChatBotController;
 
 /**
  * This is where all of the methods are and sends them to the controller to send
@@ -97,9 +100,33 @@ public class ChatBotModel {
 	{
 		String result = "";
 		
-		if(getchatCount() < 7)
+		if(getchatCount() < 5)
 		{
 			
+			if(getchatCount() < 1)
+			{
+			result = ChatBotController.startMessage;
+			}
+			else if(getchatCount() < 2)
+			{
+				result = "What is your name";
+			}
+			else if(getchatCount() < 3)
+			{
+				result = "What is your age";
+			}
+			else if(getchatCount() < 4)
+			{
+				result = "What is your height";
+			}
+			else if(getchatCount() < 5)
+			{
+				result = "Do you play card games?";
+				
+			}
+			
+			updateChatCount();
+			return result;
 		}
 		
 		int randomPosition = (int) (Math.random()* 4);
@@ -144,11 +171,20 @@ public class ChatBotModel {
 		}
 		
 		}
+
+		
+		
 		}
-			else
-			{
-			//talk about user here:
-			}
+//			else
+//			{
+//				int randomPosition1 = (int) (Math.random()* 4);
+//				
+//				if(randomPosition1 == 1)
+//				{
+//					
+//				}
+//				
+//			}
 		}
 		
 		else

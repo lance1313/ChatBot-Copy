@@ -144,7 +144,11 @@ public class ChatBotPanel extends JPanel {
 		
 		
 	}
-	
+	/**
+	 * 
+	 * @param userInput What is typed into the first text and the button is clicked alows the text to 
+	 * show in the text area.
+	 */
 	public void showTextMessage(String userInput)//does not send a string back.
 	{
 		chatArea.append("\n"+ userInput);

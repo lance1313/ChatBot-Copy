@@ -11,7 +11,7 @@ import chatbot.view.ChatBotView;
  * DON'T CALL POP UP WINDOWS ON CONTROLLERS
  * Get my MAC projects to gitHub.
  * @author Jacob Lindquist
- * @version 1.2 10/2/14 - Cleaned the quit method.
+ * @version 1.3 10/2/14 - Cleaned the quit method.
  */
 public class ChatBotController
 {
@@ -26,7 +26,7 @@ public class ChatBotController
 	/**
 	 * 
 	 */
-	public String startMessage;
+	public static String startMessage;
 	/**
 	 * 
 	 */
