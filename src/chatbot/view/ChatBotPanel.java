@@ -129,10 +129,10 @@ public class ChatBotPanel extends JPanel {
 		
 		
 		
-		firstBar.addActionListener(new ActionListener()
+		secondButton.addActionListener(new ActionListener()
 		{
 			
-			public void actionPerformed(ActionEvent wheel)
+			public void actionPerformed(ActionEvent click)
 			{
 				
 			}
