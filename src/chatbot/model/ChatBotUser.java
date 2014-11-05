@@ -1,5 +1,6 @@
 package chatbot.model;
 
+import chatbot.model.ChatBotModel;
 public class ChatBotUser {
 	//four data members.
 	//at least 2 different types int String boolean
@@ -10,12 +11,22 @@ public class ChatBotUser {
 	
 	public ChatBotUser()
 	{
+//		if(getchatCount() < 5)
+//		{
+//			
+//		}
 		this.userName = "";
-			this.age = -999;
-		this.height = 100;
+			
+		this.age = -999;
+		
+			this.height = 100;
+		
+		
+		
 		this.playsCardGames = false;
 		
 	}
+
 /**
  * 
  * @return new name for the user.
@@ -45,9 +56,11 @@ public class ChatBotUser {
 	 * @return new name for user
 	 */
 	public boolean isPlaysCardGames() {
-		
-		
-	
+//		if(currentInput"yes")
+//		{
+//			playsCardGames = true;
+//		}
+//	
 		return playsCardGames;
 	}
 /**

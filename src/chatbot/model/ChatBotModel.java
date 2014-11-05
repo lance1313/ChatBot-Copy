@@ -3,7 +3,7 @@ package chatbot.model;
 import java.util.*;
 
 import javax.swing.*;
-
+import chatbot.model.ChatBotUser;
 import chatbot.controller.ChatBotController;
 
 /**
@@ -129,7 +129,7 @@ public class ChatBotModel {
 			return result;
 		}
 		
-		int randomPosition = (int) (Math.random()* 4);
+		int randomPosition = (int) (Math.random()* 2);
 		if(currentInput != null)
 		{
 		
@@ -140,6 +140,9 @@ public class ChatBotModel {
 			{
 				result = "too long.";
 			}
+			
+			else
+				result = "too short";
 			
 		}
 		
