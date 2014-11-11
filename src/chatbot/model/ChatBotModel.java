@@ -21,6 +21,7 @@ public class ChatBotModel {
 	// Arrays.asList("hi","bye","yes","no"));
 	private ArrayList<String> contentList;
 	private ChatBotUser myUser;
+	private ArrayList<String> userInputList;
 	
 
 	/**
@@ -40,6 +41,7 @@ public class ChatBotModel {
 						// constructor.
 		contentList = new ArrayList<String>();
 		fillTheMemeList();
+		userInputList = new ArrayList<String>();
 
 	}
 
@@ -129,7 +131,7 @@ public class ChatBotModel {
 			return result;
 		}
 		
-		int randomPosition = (int) (Math.random()* 2);
+		int randomPosition = (int) (Math.random()* 6);
 		if(currentInput != null)
 		{
 		
@@ -142,8 +144,10 @@ public class ChatBotModel {
 			}
 			
 			else
+			{
 				result = "too short";
 			
+		}
 		}
 		
 		else if(randomPosition == 1)
@@ -160,44 +164,77 @@ public class ChatBotModel {
 		}
 		
 		else if(randomPosition == 2)
-		{
+		
 		{
 		
 		if (memeChecker(currentInput))// if it is true
 		{
 			result = "wow, " + currentInput + " is a meme  wahoo!";
 		}
-
 		else
 		{
 			result = "Not a meme, try again";
 		}
-		
-		}
-
-		
-		
-		}
-//			else
-//			{
-//				int randomPosition1 = (int) (Math.random()* 4);
-//				
-//				if(randomPosition1 == 1)
-//				{
-//					
-//				}
-//				
-//			}
 		}
 		
+		else if(randomPosition == 3)
+		{
+		//talk about user here.
+		}
+		else if(randomPosition == 4)
+		{
+		//add to our list
+		}
+		else 
+		{
+			if(UserInputChecker(currentInput))
+			{
+				result = "Thank you for the comment";
+			}
+			else
+			{
+				
+			}
+			
+			//list Cheker and removal.
+		}
+		
+		
+		}
+		
+	
 		else
 		{
 		result = "use words!!!!";	
-		}
+		
 		updateChatCount();
 		return result;
+		}
+		return result;
+}
+	/**
+	 * 
+	 * @param userInput
+	 * @return
+	 */
+	private boolean UserInputChecker(String userInput)
+	{
+		boolean matchesInput = false;
+		
+		for(int loopCount = 0; loopCount < userInputList.size(); loopCount++)
+		{
+		if(userInput.equalsIgnoreCase(userInputList.get(loopCount)))
+		{
+		matchesInput = true;
+		userInputList.remove(loopCount);
+		loopCount--;
+		}
+		
+		}
+		return matchesInput;
 	}
-
+	
+	
 	private void updateChatCount() {
 		chatCount++;
 	}
