@@ -8,6 +8,7 @@ public class ChatBotUser {
 	private double height;
 	private int age;
 	private boolean playsCardGames;
+	private boolean weight;
 	
 	public ChatBotUser()
 	{
@@ -56,13 +57,22 @@ public class ChatBotUser {
 	 * @return new name for user
 	 */
 	public boolean isPlaysCardGames() {
-//		if(currentInput"yes")
-//		{
-//			playsCardGames = true;
-//		}
-//	
+		
+			playsCardGames = false;
+		
+	
 		return playsCardGames;
 	}
+	/**
+	 * 
+	 * @return set default weight.
+	 */
+	public boolean weight()
+	{
+		weight = false;
+		return weight;
+	}
+	
 /**
  * 
  * @param playsCardGames the supplied boolean value for this.
@@ -70,6 +80,17 @@ public class ChatBotUser {
 	public void setPlaysCardGames(boolean playsCardGames) {
 		this.playsCardGames = playsCardGames;
 	}
+	public boolean isWeight() {
+	return weight;
+}
+/**
+ * 
+ * @param weight the users weight
+ */
+public void setWeight(boolean weight) {
+	this.weight = weight;
+}
+
 	/**
 	 * 
 	 * @param userName set name for user
@@ -79,7 +100,7 @@ public class ChatBotUser {
 	}
 	/**
 	 * 
-	 * @param age
+	 * @param age set age for user.
 	 */
 	public void setAge(int age) {
 		this.age = age;

@@ -11,7 +11,7 @@ import chatbot.controller.ChatBotController;
  * to the View.
  * 
  * @author jlin3312
- *
+ *@version1.4 11/11 updated proccess text and added notes.
  */
 public class ChatBotModel {
 
@@ -83,7 +83,7 @@ public class ChatBotModel {
 		memeList.add("bye");
 		memeList.add("sucker");
 	}
-
+	
 	private void fillTheContentList() {
 		contentList.add("");
 		contentList.add("");
@@ -105,25 +105,34 @@ public class ChatBotModel {
 		if(getchatCount() < 5)
 		{
 			
-			if(getchatCount() < 1)
+			if(getchatCount() < 0)
 			{
-			result = ChatBotController.startMessage;
+			myUser.setUserName(currentInput);
+			result = "Cool name" + myUser.getUserName() +"how old are you?";
+			}
+			else if(getchatCount() < 1)
+			{
+				int userAge = Integer.parseInt(currentInput);//takes int from string.
+				myUser.setAge(userAge);
+				result = "What is your age";
 			}
 			else if(getchatCount() < 2)
 			{
-				result = "What is your name";
+				int userAge = Integer.parseInt(currentInput);
+				myUser.setAge(userAge);
+				result = "What is your height";
 			}
 			else if(getchatCount() < 3)
 			{
-				result = "What is your age";
+				double userHeight = Double.parseDouble(currentInput);
+				myUser.setHeight(userHeight);
+				result = "Do you play card games?";
 			}
 			else if(getchatCount() < 4)
 			{
-				result = "What is your height";
-			}
-			else if(getchatCount() < 5)
-			{
-				result = "Do you play card games?";
+			boolean userGames = Boolean.parseBoolean(currentInput);
+			myUser.setPlaysCardGames(userGames);
+			result = "";
 				
 			}
 			
@@ -131,10 +140,10 @@ public class ChatBotModel {
 			return result;
 		}
 		
-		int randomPosition = (int) (Math.random()* 6);
-		if(currentInput != null)
-		{
 		
+		else if(currentInput != null && currentInput.length() > 0)
+		{
+			int randomPosition = (int) (Math.random()* 6);
 		if(randomPosition == 0)
 		{
 			//this is String checker here
@@ -254,7 +263,11 @@ public class ChatBotModel {
 		return returnWord;
 
 	}
-
+/**
+ * 
+ * @param currentInput
+ * @return
+ */
 	private boolean stringChecker(String currentInput) {
 
 		boolean isToLong = false;
