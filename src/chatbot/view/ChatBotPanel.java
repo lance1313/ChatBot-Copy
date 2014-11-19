@@ -45,7 +45,6 @@ public class ChatBotPanel extends JPanel {
 		chatPane = new JScrollPane(chatArea);
 		secondButton = new JButton("???");
 		firstBar = new JScrollBar();
-		baseLayout.putConstraint(SpringLayout.SOUTH, firstBar, 0, SpringLayout.SOUTH, this);
 		
 		
 		
@@ -81,6 +80,7 @@ public class ChatBotPanel extends JPanel {
 	{
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
+		chatArea.setEditable(false);
 	}
 	/**
 	 * this is were you put the GUI to be dysplayed on the panel in the frame.
@@ -110,6 +110,8 @@ public class ChatBotPanel extends JPanel {
 		baseLayout.putConstraint(SpringLayout.NORTH, firstBar, 0, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, chatPane, 200, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, firstTextField, -26, SpringLayout.NORTH, chatPane);
+		baseLayout.putConstraint(SpringLayout.SOUTH, firstBar, 0, SpringLayout.SOUTH, this);
+		
 	}
 	
 	
@@ -139,6 +141,7 @@ public class ChatBotPanel extends JPanel {
 				showTextMessage(currentInput);//put current input as text
 				showTextMessage(result);//set up result as text
 				firstTextField.setText("");//finish with empty text.
+				//firstTextField
 			}
 			
 			

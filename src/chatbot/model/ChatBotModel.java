@@ -93,134 +93,152 @@ public class ChatBotModel {
 
 	/**
 	 * 
-	 * @param currentInput
+	 * @param input
 	 *            This is were you pass the checkers to the controller to give
 	 *            to the view.
 	 * @return the proccesed text based on checker or other methods/arraylist.
 	 */
-	public String processText(String currentInput)
+	public String processText(String input)
 	{
 		String result = "";
-		
 		if(getchatCount() < 5)
 		{
-			
-			if(getchatCount() < 0)
-			{
-			myUser.setUserName(currentInput);
-			result = "Cool name" + myUser.getUserName() +"how old are you?";
-			}
-			else if(getchatCount() < 1)
-			{
-				int userAge = Integer.parseInt(currentInput);//takes int from string.
-				myUser.setAge(userAge);
-				result = "What is your age";
-			}
-			else if(getchatCount() < 2)
-			{
-				int userAge = Integer.parseInt(currentInput);
-				myUser.setAge(userAge);
-				result = "What is your height";
-			}
-			else if(getchatCount() < 3)
-			{
-				double userHeight = Double.parseDouble(currentInput);
-				myUser.setHeight(userHeight);
-				result = "Do you play card games?";
-			}
-			else if(getchatCount() < 4)
-			{
-			boolean userGames = Boolean.parseBoolean(currentInput);
-			myUser.setPlaysCardGames(userGames);
-			result = "";
-				
-			}
-			
-			updateChatCount();
-			return result;
+		result = introduceUser(input);
 		}
 		
 		
-		else if(currentInput != null && currentInput.length() > 0)
+		else if(input != null && input.length() > 0)
 		{
-			int randomPosition = (int) (Math.random()* 6);
-		if(randomPosition == 0)
-		{
-			//this is String checker here
-			if(stringChecker(currentInput))
-			{
-				result = "too long.";
-			}
-			
-			else
-			{
-				result = "too short";
-			
-		}
-		}
-		
-		else if(randomPosition == 1)
-		{
-			//contentChecker here.
-			if(contentChecker(currentInput))
-			{
-				result = "You are cool.";
-			}
-			else
-			{
-				result = "ZZZZzzz.";
-			}
-		}
-		
-		else if(randomPosition == 2)
-		
-		{
-		
-		if (memeChecker(currentInput))// if it is true
-		{
-			result = "wow, " + currentInput + " is a meme  wahoo!";
+		result = randomChatConversation(input);	
 		}
 		else
 		{
-			result = "Not a meme, try again";
-		}
-		}
-		
-		else if(randomPosition == 3)
-		{
-		//talk about user here.
-		}
-		else if(randomPosition == 4)
-		{
-		//add to our list
-		}
-		else 
-		{
-			if(UserInputChecker(currentInput))
-			{
-				result = "Thank you for the comment";
-			}
-			else
-			{
-				
-			}
+			result = "use words!!!";
+			chatCount--;
 			
-			//list Cheker and removal.
 		}
-		
-		
-		}
-		
-	
-		else
-		{
-		result = "use words!!!!";	
-		
-		updateChatCount();
-		return result;
-		}
+		chatCount++;
 		return result;
 }
+	
+	private String introduceUser(String input)
+	{
+		String userQuestion = "";
+		
+		
+			
+			if(getchatCount() == 0)
+			{
+			myUser.setUserName(input);
+			userQuestion = "Cool name " + myUser.getUserName() +"how old are you?";
+			}
+			else if(getchatCount() == 1)
+			{
+				int userAge = Integer.parseInt(input);//takes int from string.
+				myUser.setAge(userAge);
+				userQuestion = "wow you're old!"+"What is your age";
+			}
+			else if(getchatCount() == 2)
+			{
+				int userAge = Integer.parseInt(input);
+				myUser.setAge(userAge);
+				userQuestion = "What is your height";
+			}
+			else if(getchatCount() == 3)
+			{
+				double userHeight = Double.parseDouble(input);
+				myUser.setHeight(userHeight);
+				userQuestion = "Do you play card games?";
+			}
+			else if(getchatCount() == 4)
+			{
+			boolean userGames = Boolean.parseBoolean(input);
+			myUser.setPlaysCardGames(userGames);
+			userQuestion = "";
+				
+			}
+			
+			
+		return userQuestion;
+	}
+	
+	private String randomChatConversation(String input)
+	{
+		String conversation ="";
+		int randomPosition = (int) (Math.random()* 6);
+	if(randomPosition == 0)
+	{
+		//this is String checker here
+		if(stringChecker(input))
+		{
+			conversation = "too long.";
+		}
+		
+		else
+		{
+			conversation = "too short";
+		
+	}
+	}
+	
+	else if(randomPosition == 1)
+	{
+		//contentChecker here.
+		if(contentChecker(input))
+		{
+			conversation = "You are cool.";
+		}
+		else
+		{
+			conversation = "ZZZZzzz.";
+		}
+	}
+	
+	else if(randomPosition == 2)
+	
+	{
+	if (memeChecker(input))// if it is true
+	{
+		conversation = "wow, " + conversation + " is a meme  wahoo!";
+	}
+	else
+	{
+		conversation = "Not a meme, try again";
+	}
+	}
+	else if(randomPosition == 3)
+	{
+	//talk about user here.
+	}
+	else if(randomPosition == 4)
+	{
+	//add to our list
+		userInputList.add(input);
+		conversation = "Thank you for the comment";
+	}
+	else 
+	{
+		if(UserInputChecker(input))
+		{
+			
+		}
+		else
+		{
+			
+		}
+		//list Cheker and removal.
+	}
+	
+//	else
+//	{
+//	input = "use words!!!!";	
+//	}
+	updateChatCount();
+		return conversation;
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @param userInput
@@ -250,28 +268,28 @@ public class ChatBotModel {
 
 	/**
 	 * 
-	 * @param currentInput
+	 * @param input
 	 * @return
 	 */
-	private boolean contentChecker(String currentInput) {
+	private boolean contentChecker(String input) {
 
 		boolean returnWord = false;
 
-		if (currentInput.contains("Jacob")) {
-			//returnWord = "hello " + currentInput + "my name is " + name;
+		if (input.contains("Jacob")) {
+			//returnWord = "hello " + input + "my name is " + name;
 		}
 		return returnWord;
 
 	}
 /**
  * 
- * @param currentInput
+ * @param input
  * @return
  */
-	private boolean stringChecker(String currentInput) {
+	private boolean stringChecker(String input) {
 
 		boolean isToLong = false;
-		if (currentInput.length() >= 10)
+		if (input.length() >= 10)
 		{
 			isToLong = true;
 		}
