@@ -130,31 +130,31 @@ public class ChatBotModel {
 			if(getchatCount() == 0)
 			{
 			myUser.setUserName(input);
-			userQuestion = "Cool name " + myUser.getUserName() +"how old are you?";
+			userQuestion = "Cool name " + myUser.getUserName() +" how old are you?";
 			}
 			else if(getchatCount() == 1)
 			{
 				int userAge = Integer.parseInt(input);//takes int from string.
 				myUser.setAge(userAge);
-				userQuestion = "wow you're old!"+"What is your age";
+				userQuestion = "wow you're old !"+" What is your height";
 			}
 			else if(getchatCount() == 2)
 			{
 				int userAge = Integer.parseInt(input);
 				myUser.setAge(userAge);
-				userQuestion = "What is your height";
+				userQuestion = " What is your height";
 			}
 			else if(getchatCount() == 3)
 			{
 				double userHeight = Double.parseDouble(input);
 				myUser.setHeight(userHeight);
-				userQuestion = "Do you play card games?";
+				userQuestion = " Do you play card games?";
 			}
 			else if(getchatCount() == 4)
 			{
 			boolean userGames = Boolean.parseBoolean(input);
 			myUser.setPlaysCardGames(userGames);
-			userQuestion = "";
+			userQuestion = " I like card games.";
 				
 			}
 			
@@ -216,17 +216,32 @@ public class ChatBotModel {
 		userInputList.add(input);
 		conversation = "Thank you for the comment";
 	}
+	
+	else if(randomPosition == 5)
+	{
+		if(mashChecker(input))
+		{
+		conversation =  mashingDetected(input);
+		}
+		else
+		{
+			conversation = noMashingDetected(input);
+		}
+	
+	}
 	else 
 	{
 		if(UserInputChecker(input))
 		{
-			
+			conversation ="nice you removed it from the list";
 		}
 		else
 		{
-			
+			conversation ="that wasn't in the conversation before.";
 		}
 		//list Cheker and removal.
+		
+		
 	}
 	
 //	else
@@ -236,8 +251,52 @@ public class ChatBotModel {
 	updateChatCount();
 		return conversation;
 	}
+	/**
+	 * checks for keyboard mashing if the user is mashimg and sets to true if the statment equals JKL.
+	 * @param input
+	 * @return whether mashing has been detected.
+	 */
+	private boolean mashChecker(String input)
+	{
+		boolean isMashing = false;
+		if(input.indexOf("jkl;")> -1)
+		{
+			isMashing = true;
+		}
+
+		return isMashing;
+		
+	}
 	
+	private String mashingDetected(String input)
+	{
+		String mashed = "";
+		
+		mashed = input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);//this addes the input plus what they inputed.
+		mashed += input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		
+		return mashed;
+	}
 	
+	private String noMashingDetected(String input)
+	{
+		String noMashing = "Thanks for not mashing:)";
+		if(input.length()>1)
+		{
+		noMashing += input.substring(input.length()/3,input.length()/2);
+		}
+		
+		else
+		{
+			
+		}
+		
+				
+				return noMashing;
+	}
 	
 	/**
 	 * 

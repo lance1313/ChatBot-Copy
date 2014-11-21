@@ -63,7 +63,11 @@ public class ChatBotController
 			
 		
 	}
-	
+	/**
+	 * 
+	 * @param input this says to the view what the chatbot is talking about.
+	 * @return
+	 */
 	public String getChatBotDialog(String input)
 	{
 		String result = "";
