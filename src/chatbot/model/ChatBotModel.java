@@ -74,7 +74,9 @@ public class ChatBotModel {
 	{
 		this.name = name;
 	}
-
+/**
+ * these are the mems
+ */
 	private void fillTheMemeList() {
 		memeList.add("Poke");
 		memeList.add("hello");
@@ -83,7 +85,9 @@ public class ChatBotModel {
 		memeList.add("bye");
 		memeList.add("sucker");
 	}
-	
+	/**
+	 * what you can fill with.
+	 */
 	private void fillTheContentList() {
 		contentList.add("");
 		contentList.add("");
@@ -120,37 +124,41 @@ public class ChatBotModel {
 		chatCount++;
 		return result;
 }
-	
+	/**
+	 * 
+	 * @param input this is what the user inputs
+	 * @return
+	 */
 	private String introduceUser(String input)
 	{
 		String userQuestion = "";
 		
-		
+	
 			
-			if(getchatCount() == 0)
+			if(getchatCount() == 0 && input != null)
 			{
 			myUser.setUserName(input);
 			userQuestion = "Cool name " + myUser.getUserName() +" how old are you?";
 			}
-			else if(getchatCount() == 1)
+			else if(getchatCount() == 1 && input != null)
 			{
 				int userAge = Integer.parseInt(input);//takes int from string.
 				myUser.setAge(userAge);
 				userQuestion = "wow you're old !"+" What is your height";
 			}
-			else if(getchatCount() == 2)
+			else if(getchatCount() == 2 && input != null)
 			{
 				int userAge = Integer.parseInt(input);
 				myUser.setAge(userAge);
 				userQuestion = " What is your height";
 			}
-			else if(getchatCount() == 3)
+			else if(getchatCount() == 3 && input != null)
 			{
 				double userHeight = Double.parseDouble(input);
 				myUser.setHeight(userHeight);
 				userQuestion = " Do you play card games?";
 			}
-			else if(getchatCount() == 4)
+			else if(getchatCount() == 4 && input != null)
 			{
 			boolean userGames = Boolean.parseBoolean(input);
 			myUser.setPlaysCardGames(userGames);
@@ -161,7 +169,11 @@ public class ChatBotModel {
 			
 		return userQuestion;
 	}
-	
+	/**
+	 * 
+	 * @param input this is what will show in the GUI
+	 * @return
+	 */
 	private String randomChatConversation(String input)
 	{
 		String conversation ="";
@@ -280,7 +292,11 @@ public class ChatBotModel {
 		
 		return mashed;
 	}
-	
+	/**
+	 * 
+	 * @param input shows if you have mashed a certain way
+	 * @return
+	 */
 	private String noMashingDetected(String input)
 	{
 		String noMashing = "Thanks for not mashing:)";
@@ -327,7 +343,7 @@ public class ChatBotModel {
 
 	/**
 	 * 
-	 * @param input
+	 * @param input checks what the user types in.
 	 * @return
 	 */
 	private boolean contentChecker(String input) {
@@ -342,8 +358,8 @@ public class ChatBotModel {
 	}
 /**
  * 
- * @param input
- * @return
+ * @param input checks if the word is to long.
+ * @return says if it is to long.
  */
 	private boolean stringChecker(String input) {
 
@@ -359,8 +375,8 @@ public class ChatBotModel {
 
 	/**
 	 * 
-	 * @param input
-	 * @return
+	 * @param input sees if the user types a meme.
+	 * @return respondes to the user
 	 */
 	private boolean memeChecker(String input) {
 		boolean isAMeme = false;
