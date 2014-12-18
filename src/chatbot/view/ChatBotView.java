@@ -10,15 +10,11 @@ import chatbot.controller.ChatBotController;
  * @author jlin3312
  *
  */
-public class ChatBotView
-{
+public class ChatBotView {
 
 	// private String chat;
 
 	private ChatBotController baseController;
-	
-	
-	
 
 	// this is the chat checker.
 
@@ -28,7 +24,9 @@ public class ChatBotView
 	 * 
 	 * @param baseController
 	 */
-	public ChatBotView(ChatBotController baseController)//this is a constructor for the controller in the view.
+	public ChatBotView(ChatBotController baseController)// this is a constructor
+														// for the controller in
+														// the view.
 	{
 		this.baseController = baseController;// shove the 2 baseControllers
 												// together.
@@ -38,31 +36,30 @@ public class ChatBotView
 	 * This shows the words that apperes on the screen and returns the result to
 	 * determine weather you want it to exit or continue based on input.
 	 * 
-	 * @param currentInput the supplied string
+	 * @param currentInput
+	 *            the supplied string
 	 * @return hte users typed response
 	 */
-	public String showChatBot(String currentInput)
-	{
+	public String showChatBot(String currentInput) {
 		String result = "";
-		
-			int wordLength = currentInput.length();
-		result = JOptionPane.showInputDialog(null, baseController.getMyAwesomeChatBot().getName() +" says: "+ currentInput);
+
+		int wordLength = currentInput.length();
+		result = JOptionPane.showInputDialog(null, baseController
+				.getMyAwesomeChatBot().getName() + " says: " + currentInput);
 
 		return result;
 	}
-	
-	public String ShowChatBotMessage(String currentInput)
-	{
-		JOptionPane.showMessageDialog(null, baseController.getMyAwesomeChatBot().getName() + " says "+ currentInput);
-		return currentInput;
-	
-	}
-	
-}
-	
 
-	// + ChatBotController.getMyChatBot().getName(
-/*if (currentInput != null)
-		{
+	public String ShowChatBotMessage(String currentInput) {
+		JOptionPane.showMessageDialog(null, baseController
+				.getMyAwesomeChatBot().getName() + " says " + currentInput);
+		return currentInput;
+
+	}
+
 }
-*/
+
+// + ChatBotController.getMyChatBot().getName(
+/*
+ * if (currentInput != null) { }
+ */
