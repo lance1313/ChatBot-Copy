@@ -142,6 +142,7 @@ public class ChatBotPanel extends JPanel {
 
 	/**
 	 * 
+
 	 * @param userInput
 	 *            What is typed into the first text and the button is clicked
 	 *            alows the text to show in the text area.
